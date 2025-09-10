@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zeriah Studios — Playful worlds, tight loops</title>
+  <meta name="description" content="Zeriah Studios crafts playful, low-friction games with satisfying loops." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect rx='12' width='64' height='64' fill='%2319293A'/%3E%3Cpath d='M18 42h28l-6 6H24z' fill='%2322c55e'/%3E%3Cpath d='M20 18h24l6 6H14z' fill='%2381e6a8'/%3E%3C/svg%3E">
+  <style>
+    :root{
+      --bg:#0b0f14; --panel:#111823; --soft:#0f1620;
+      --text:#e7eef7; --muted:#a0b3c9;
+      --brand:#1e293b; --accent:#22c55e; --accent2:#8df0b8;
+      --border:rgba(255,255,255,.08); --shadow:0 10px 30px rgba(0,0,0,.35);
+      --r:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% -10%, #0c1a2a 0, transparent 60%),
+        linear-gradient(180deg,#0a0f16 0%, #0b0f14 100%);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;backdrop-filter:saturate(140%) blur(6px);background:rgba(11,15,20,.5);border-bottom:1px solid var(--border);z-index:5}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#1f2937,#22c55e);box-shadow:var(--shadow)}
+    .brand span{font-size:1.15rem;letter-spacing:.2px}
+    .links{display:flex;gap:14px;flex-wrap:wrap}
+    .links a{padding:8px 12px;border:1px solid var(--border);border-radius:10px;color:var(--muted)}
+    .links a.primary{background:linear-gradient(90deg,#22c55e,#8df0b8);color:#00160b;font-weight:700;border-color:transparent}
+    .hero{padding:56px 0 30px}
+    h1{margin:0;font-size:clamp(30px,6vw,48px);line-height:1.05}
+    .lead{color:var(--muted);max-width:780px;margin-top:10px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:var(--panel);font-weight:700}
+    .btn.primary{background:linear-gradient(90deg,#22c55e,#8df0b8);color:#00160b;border-color:transparent}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);min-height:100%}
+    .card h3{margin:.2rem 0 .4rem}
+    .tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.2);color:#00160b;background:linear-gradient(90deg,#22c55e,#8df0b8);font-weight:800}
+    section{margin:26px 0}
+    .list{display:grid;gap:8px;margin-top:8px}
+    .list li{background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:10px 12px;color:var(--muted)}
+    footer{margin:40px 0;color:var(--muted);border-top:1px solid var(--border);padding-top:18px}
+    .small{font-size:.95rem}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a href="/" class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <span>Zeriah Studios</span>
+      </a>
+      <nav class="links">
+        <a href="#games">Games</a>
+        <a href="#devlog">Devlog</a>
+        <a href="#contact">Contact</a>
+        <a class="primary" href="https://zeriahgroup.github.io" target="_blank" rel="noopener">Zeriah Group</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Playful worlds, tight loops.</h1>
+      <p class="lead">We build cozy, satisfying games that respect your time—quick to start, rewarding to master, and friendly for all ages.</p>
+      <div class="cta">
+        <a class="btn primary" href="#games">See the games</a>
+        <a class="btn" href="https://zeriahlabs.github.io" target="_blank" rel="noopener">Visit Zeriah Labs</a>
+      </div>
+    </section>
+
+    <section id="games">
+      <h2>Games</h2>
+      <div class="grid" style="margin-top:12px">
+        <article class="card">
+          <span class="tag">Auto-battler</span>
+          <h3>Super Nursery Fight</h3>
+          <p class="small">Cute characters, clever synergies. Draft, combine, and outwit across bite-sized rounds.</p>
+          <ul class="list">
+            <li>Quick runs · friendly art</li>
+            <li>Meaningful choices, low friction</li>
+            <li>Roadmap: co-op & weekly seeds</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">Arcade</span>
+          <h3>Veggie Buddy</h3>
+          <p class="small">A cheerful companion app that turns small habits into big streaks—mini-games, TTS, confetti.</p>
+          <ul class="list">
+            <li>Kid-safe feedback loops</li>
+            <li>Short sessions, high delight</li>
+            <li>Roadmap: seasonal events</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">Action-Puzzle</span>
+          <h3>Bonk the Bronto</h3>
+          <p class="small">Cavemen, chaos, and comedic timing. Bonk just right to clear routes and collect shiny things.</p>
+          <ul class="list">
+            <li>Snackable stages</li>
+            <li>Expressive 2D/3D mix</li>
+            <li>Roadmap: creator mode</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="devlog">
+      <h2>Devlog & Press</h2>
+      <div class="grid" style="margin-top:12px">
+        <article class="card">
+          <h3>Behind the scenes</h3>
+          <p>Short, readable updates on art, design, and balance tweaks. Coming soon.</p>
+        </article>
+        <article class="card">
+          <h3>Press kit</h3>
+          <p>Screens, logos, and concise copy for coverage. Email us and we’ll send the latest kit.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card" style="margin-top:12px">
+        <p>Collabs, playtests, or press? Ping us at <a href="mailto:hello@zeriahstudios.com">hello@zeriahstudios.com</a>.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div>© <span id="y"></span> Zeriah Studios · A <a href="https://zeriahgroup.github.io" target="_blank" rel="noopener">Zeriah Group</a> company</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
