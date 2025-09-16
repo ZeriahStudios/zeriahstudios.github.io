@@ -43,9 +43,12 @@
       text-decoration:none; color:var(--fg); margin-left:18px; font-weight:600;
       padding:8px 12px; border-radius:10px; background:transparent;
     }
-    nav a:hover { background: #0b1220; }
-    nav .cta { background: var(--brand); color: #0b1a13; }
-    nav .cta:hover { opacity:.95; }
+    nav a.cta:hover,
+    nav a.cta:focus-visible {
+    background: #16a34a; /* slightly darker green */
+    color: #0b1a13;
+    }
+
 
     /* Hero */
     .hero { text-align:center; padding: 72px 0 40px; }
