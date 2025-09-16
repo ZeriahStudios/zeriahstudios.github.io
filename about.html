@@ -6,48 +6,63 @@
   <title>About — Zeriah Studios</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9fafb;
-      color: #1f2937;
-      line-height: 1.6;
+    :root{
+      --bg:#0b1220; --panel:#111a2b; --ink:#eaf2ff; --muted:#a8b3c9; --link:#00d0ff;
+      --accent:#22e3b1; --max: 880px; --rule: rgba(255,255,255,.08);
     }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 3rem 1rem;
-    }
-    h1 {
-      font-size: 2.25rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #111827;
-    }
-    p {
-      margin-bottom: 1.25rem;
-      font-size: 1.125rem;
-    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#0b1220,#0a0f1a);color:var(--ink);line-height:1.75}
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px 16px}
+    header{border-bottom:1px solid var(--rule);background:rgba(10,15,26,.55);backdrop-filter:saturate(140%) blur(6px)}
+    .content{max-width:var(--max);margin:0 auto;padding:32px 16px}
+    h1{font-size:2.4rem;line-height:1.1;margin:6px 0 18px}
+    p{margin:14px 0;color:var(--muted);font-size:1.06rem}
+    .back-link{color:var(--link);text-decoration:none;font-weight:800}
+    .back-link:hover{text-decoration:underline}
+    .card{background:var(--panel);border:1px solid var(--rule);border-radius:16px;padding:18px 20px;margin-top:14px}
+    footer{margin:36px 0;text-align:center;color:var(--muted);font-size:.92rem;border-top:1px solid var(--rule);padding-top:16px}
+    .hl{color:#fff}
   </style>
 </head>
 <body>
-  <div class="container">
+  <header class="wrap">
+    <a href="index.html" class="back-link">← Back to Zeriah Studios</a>
+  </header>
+
+  <main class="content">
     <h1>Zeriah Studios</h1>
-    <p>
-      Zeriah Studios is the gaming and entertainment arm of Zeriah Group.
-      Our focus is on capturing the timeless <em>fun factor</em> that made games of the 80s and 90s so memorable.
+    <p class="hl">
+      We make cozy, lighthearted games and playful experiences designed for bonding — quick to pick up, satisfying to master,
+      and respectful of your time.
     </p>
-    <p>
-      Rather than chasing only visuals, we build lighthearted experiences designed for laughter, joy,
-      and family bonding — moments that bring people closer together.
+
+    <div class="card">
+      <p><strong>Play together</strong> — We design for couch co-play and short sessions that fit real life. Whether you have five minutes or an evening, you can jump in and have fun.</p>
+    </div>
+
+    <div class="card">
+      <p><strong>Fair & friendly</strong> — No predatory monetization. Clear value, optional cosmetics, and no pay-to-win. We want games your family and friends can feel good about.</p>
+    </div>
+
+    <div class="card">
+      <p><strong>Polish with heart</strong> — Charming art, upbeat sound, and snappy controls. We sweat the small details so play feels delightful.</p>
+    </div>
+
+    <div class="card">
+      <p><strong>Privacy-aware</strong> — Minimal data collection and sensible defaults. We focus on gameplay, not profiles.</p>
+    </div>
+
+    <p style="margin-top:18px">
+      Zeriah Studios sits alongside <a href="https://zeriahlabs.com" class="back-link">Zeriah Labs</a> under the Zeriah Group umbrella.  
+      Different missions, same spirit: craft with care, delight players, and build things that bring people closer.
     </p>
-    <p>
-      In a world where social media often creates distance, our intention is simple:
-      to create games that make people smile and share time with one another.
-    </p>
-  </div>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Zeriah Studios · A Zeriah Group company
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
