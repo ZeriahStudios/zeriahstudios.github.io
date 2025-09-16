@@ -8,120 +8,157 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root{
+      --bg:#0f172a;        /* page background (slate-900) */
+      --panel:#1e293b;     /* cards/nav background (slate-800) */
+      --fg:#f1f5f9;        /* text (slate-100) */
+      --muted:#94a3b8;     /* secondary text (slate-400) */
+      --brand:#22c55e;     /* green */
+      --accent:#3b82f6;    /* blue */
+      --radius:16px;
+    }
+    * { box-sizing: border-box; }
     body {
-      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      background: #0f172a;
-      color: #f1f5f9;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
     }
+
+    /* Header / Nav */
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: #0f172a;
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 16px 24px; background: var(--bg);
+      position: sticky; top: 0; z-index: 10;
     }
-    header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand img { height:28px; width:auto; display:block; }
+    .brand h1 { font-size: 1.4rem; margin:0; font-weight:700; }
+
     nav a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      color: #f1f5f9;
-      font-weight: 500;
+      text-decoration:none; color:var(--fg); margin-left:18px; font-weight:600;
+      padding:8px 12px; border-radius:10px; background:transparent;
     }
-    nav a:hover {
-      color: #38bdf8;
-    }
+    nav a:hover { background: #0b1220; }
+    nav .cta { background: var(--brand); color: #0b1a13; }
+    nav .cta:hover { opacity:.95; }
+
+    /* Hero */
+    .hero { text-align:center; padding: 72px 20px 40px; }
+    .hero h2 { font-size: clamp(2rem, 3.5vw, 3rem); margin:0 0 12px; }
+    .hero p  { color:var(--muted); margin:0 auto 20px; max-width:900px; }
     .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      text-decoration: none;
+      display:inline-block; padding:12px 20px; margin:8px;
+      font-weight:700; border-radius:12px; text-decoration:none;
     }
-    .btn-green {
-      background: #22c55e;
-      color: white;
-    }
-    .btn-dark {
-      background: #1e293b;
-      color: #f1f5f9;
-    }
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .games {
-      padding: 2rem;
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    .btn.green { background:var(--brand); color:#062611; }
+    .btn.dark  { background:var(--panel); color:var(--fg); }
+
+    /* Games grid */
+    .section { padding: 20px; }
+    .grid {
+      display:grid; gap:18px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
     .card {
-      background: #1e293b;
-      border-radius: 1rem;
-      padding: 1.5rem;
+      background:var(--panel); border-radius:var(--radius); padding:22px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.25);
     }
     .tag {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.875rem;
-      border-radius: 0.75rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
+      display:inline-block; font-weight:800; font-size:.85rem;
+      padding:6px 12px; border-radius:999px; margin-bottom:10px;
+      color:white; background:var(--brand);
     }
-    .tag-green { background: #22c55e; color: white; }
-    .tag-blue { background: #3b82f6; color: white; }
+    .tag.blue { background:var(--accent); }
+    .card h3 { margin:8px 0 10px; }
+    .card p  { margin:0 0 12px; color:var(--fg); }
+    .card ul { margin:0; padding-left:18px; color:var(--muted); }
+    .logo-inline {
+      display:block; max-width:220px; width:100%; height:auto;
+      margin:6px 0 10px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+    }
+
+    /* Footer (optional placeholder) */
+    footer { color:var(--muted); text-align:center; padding:40px 20px; }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <h1>Zeriah Studios</h1>
+    <div class="brand">
+      <!-- Studios horizontal logo -->
+      <img src="https://assets.zeriahstudios.com/Zeriah%20Studios%20Horizontal%20Tight.webp"
+           alt="Zeriah Studios logo">
+      <h1>Zeriah Studios</h1>
+    </div>
     <nav>
       <a href="index.html">Games</a>
       <a href="about.html">About</a>
       <a href="devlog.html">Devlog</a>
       <a href="contact.html">Contact</a>
-      <a href="https://zeriahgroup.com" class="btn btn-green">Zeriah Group</a>
+      <a class="cta" href="https://zeriahgroup.com">Zeriah Group</a>
     </nav>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
     <h2>Playful worlds, tight loops.</h2>
     <p>We build cozy, satisfying games that respect your time — quick to start, rewarding to master, and friendly for all ages.</p>
-    <a href="#games" class="btn btn-green">See the games</a>
-    <a href="https://zeriahlabs.com" class="btn btn-dark">Visit Zeriah Labs</a>
+    <a href="#games" class="btn green">See the games</a>
+    <a href="https://zeriahlabs.com" class="btn dark">Visit Zeriah Labs</a>
   </section>
 
-  <section id="games" class="games">
-    <div class="card">
-      <span class="tag tag-green">Auto-battler</span>
-      <h3>Super Nursery Fight</h3>
-      <p>Cute characters, clever synergies. Draft, combine, and outwit across bite-sized rounds.</p>
-      <ul>
-        <li>Quick runs · friendly art</li>
-        <li>Meaningful choices, low friction</li>
-        <li>Roadmap: co-op & weekly seeds</li>
-      </ul>
-    </div>
+  <!-- Games -->
+  <section id="games" class="section">
+    <div class="grid">
 
-    <div class="card">
-      <span class="tag tag-blue">Action-Puzzle</span>
-      <h3>Bonk the Bronto</h3>
-      <p>Cavemen, chaos, and comedic timing. Bonk just right to clear routes and collect shiny things.</p>
-      <ul>
-        <li>Snackable stages</li>
-        <li>Expressive 2D/3D mix</li>
-        <li>Roadmap: creator mode</li>
-      </ul>
+      <!-- Super Nursery Fight -->
+      <article class="card">
+        <span class="tag">Auto-battler</span>
+        <h3>Super Nursery Fight</h3>
+        <p>Cute characters, clever synergies. Draft, combine, and outwit across bite-sized rounds.</p>
+        <ul>
+          <li>Quick runs · friendly art</li>
+          <li>Meaningful choices, low friction</li>
+          <li>Roadmap: co-op & weekly seeds</li>
+        </ul>
+      </article>
+
+      <!-- Bonk the Bronto -->
+      <article class="card">
+        <span class="tag blue">Action-Puzzle</span>
+        <h3>Bonk the Bronto</h3>
+        <p>Cavemen, chaos, and comedic timing. Bonk just right to clear routes and collect shiny things.</p>
+        <ul>
+          <li>Snackable stages</li>
+          <li>Expressive 2D/3D mix</li>
+          <li>Roadmap: creator mode</li>
+        </ul>
+      </article>
+
+      <!-- WildLiveWatch (word-mark image for consistency) -->
+      <article class="card">
+        <span class="tag blue">Web Project</span>
+        <!-- Word-mark fits better than the banner here -->
+        <img class="logo-inline"
+             src="https://assets.wildlivewatch.com/word_mark.webp"
+             alt="WildLiveWatch word-mark">
+        <p>Live wildlife cameras in one cozy place — a relaxing window into nature, curated for family-friendly viewing.</p>
+        <ul>
+          <li>Clean, kid-safe presentation</li>
+          <li>Lightweight grid for multiple streams</li>
+          <li>Roadmap: species tags & highlights</li>
+        </ul>
+      </article>
+
     </div>
   </section>
+
+  <footer>
+    © <span id="y"></span> Zeriah Studios. All rights reserved.
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
