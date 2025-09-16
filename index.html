@@ -16,6 +16,7 @@
       --brand:#22c55e;     /* green */
       --accent:#3b82f6;    /* blue */
       --radius:16px;
+      --shadow:0 4px 20px rgba(0,0,0,.25);
     }
     * { box-sizing: border-box; }
     body {
@@ -24,14 +25,16 @@
       background: var(--bg);
       color: var(--fg);
     }
-    
-    
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
     /* Header / Nav */
     header {
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 16px 24px; background: var(--bg);
       position: sticky; top: 0; z-index: 10;
+      background: var(--bg);
+      padding: 16px 0;
     }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; }
     .brand { display:flex; align-items:center; gap:12px; }
     .brand img { height:28px; width:auto; display:block; }
     .brand h1 { font-size: 1.4rem; margin:0; font-weight:700; }
@@ -45,7 +48,7 @@
     nav .cta:hover { opacity:.95; }
 
     /* Hero */
-    .hero { text-align:center; padding: 72px 20px 40px; }
+    .hero { text-align:center; padding: 72px 0 40px; }
     .hero h2 { font-size: clamp(2rem, 3.5vw, 3rem); margin:0 0 12px; }
     .hero p  { color:var(--muted); margin:0 auto 20px; max-width:900px; }
     .btn {
@@ -55,15 +58,22 @@
     .btn.green { background:var(--brand); color:#062611; }
     .btn.dark  { background:var(--panel); color:var(--fg); }
 
-    /* Games grid */
-    .section { padding: 20px; }
+    /* Unified card grid (same rhythm as Labs) */
+    .section { padding: 20px 0; }
     .grid {
-      display:grid; gap:18px;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      justify-content:center;
     }
     .card {
-      background:var(--panel); border-radius:var(--radius); padding:22px;
-      box-shadow: 0 4px 20px rgba(0,0,0,.25);
+      background:var(--panel);
+      border-radius:var(--radius);
+      padding:22px;
+      max-width:360px;
+      flex:1 1 300px;
+      box-shadow: var(--shadow);
+      min-height:100%;
     }
     .tag {
       display:inline-block; font-weight:800; font-size:.85rem;
@@ -79,25 +89,8 @@
       margin:6px 0 10px;
       filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
     }
-.section {
-  padding: 20px;
-}
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-.card {
-  background: #1e293b;
-  border-radius: 16px;
-  padding: 22px;
-  max-width: 360px;
-  flex: 1 1 300px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.25);
-}
 
-    /* Footer (optional placeholder) */
+    /* Footer */
     footer { color:var(--muted); text-align:center; padding:40px 20px; }
   </style>
 </head>
@@ -105,74 +98,75 @@
 
   <!-- Header -->
   <header>
-    <div class="brand">
-      <!-- Studios horizontal logo -->
-      <img src="https://assets.zeriahstudios.com/Zeriah%20Studios%20Horizontal%20Tight.webp"
-           alt="Zeriah Studios logo">
-      <h1>Zeriah Studios</h1>
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="https://assets.zeriahstudios.com/Zeriah%20Studios%20Horizontal%20Tight.webp" alt="Zeriah Studios logo">
+        <h1>Zeriah Studios</h1>
+      </div>
+      <nav>
+        <a href="index.html">Games</a>
+        <a href="about.html">About</a>
+        <a href="devlog.html">Devlog</a>
+        <a href="contact.html">Contact</a>
+        <a class="cta" href="https://zeriahgroup.com">Zeriah Group</a>
+      </nav>
     </div>
-    <nav>
-      <a href="index.html">Games</a>
-      <a href="about.html">About</a>
-      <a href="devlog.html">Devlog</a>
-      <a href="contact.html">Contact</a>
-      <a class="cta" href="https://zeriahgroup.com">Zeriah Group</a>
-    </nav>
   </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero wrap">
     <h2>Playful worlds, tight loops.</h2>
     <p>We build cozy, satisfying games that respect your time — quick to start, rewarding to master, and friendly for all ages.</p>
     <a href="#games" class="btn green">See the games</a>
-    <a href="https://zeriahlabs.com" class="btn dark">Visit Zeriah Labs</a>
+    <a href="https://zeriahlabs.com" class="btn dark" target="_blank" rel="noopener">Visit Zeriah Labs</a>
   </section>
 
   <!-- Games -->
   <section id="games" class="section">
-  <div class="grid">
+    <div class="wrap">
+      <div class="grid">
 
-    <!-- Super Nursery Fight -->
-    <article class="card">
-      <span class="tag">Auto-battler</span>
-      <h3>Super Nursery Fight</h3>
-      <p>Cute characters, clever synergies. Draft, combine, and outwit across bite-sized rounds.</p>
-      <ul>
-        <li>Quick runs · friendly art</li>
-        <li>Meaningful choices, low friction</li>
-        <li>Roadmap: co-op & weekly seeds</li>
-      </ul>
-    </article>
+        <!-- Super Nursery Fight -->
+        <article class="card">
+          <span class="tag">Auto-battler</span>
+          <h3>Super Nursery Fight</h3>
+          <p>Cute characters, clever synergies. Draft, combine, and outwit across bite-sized rounds.</p>
+          <ul>
+            <li>Quick runs · friendly art</li>
+            <li>Meaningful choices, low friction</li>
+            <li>Roadmap: co-op &amp; weekly seeds</li>
+          </ul>
+        </article>
 
-    <!-- Bonk the Bronto -->
-    <article class="card">
-      <span class="tag blue">Action-Puzzle</span>
-      <h3>Bonk the Bronto</h3>
-      <p>Cavemen, chaos, and comedic timing. Bonk just right to clear routes and collect shiny things.</p>
-      <ul>
-        <li>Snackable stages</li>
-        <li>Expressive 2D/3D mix</li>
-        <li>Roadmap: creator mode</li>
-      </ul>
-    </article>
+        <!-- Bonk the Bronto -->
+        <article class="card">
+          <span class="tag blue">Action-Puzzle</span>
+          <h3>Bonk the Bronto</h3>
+          <p>Cavemen, chaos, and comedic timing. Bonk just right to clear routes and collect shiny things.</p>
+          <ul>
+            <li>Snackable stages</li>
+            <li>Expressive 2D/3D mix</li>
+            <li>Roadmap: creator mode</li>
+          </ul>
+        </article>
 
-    <!-- WildLiveWatch -->
-    <article class="card">
-      <span class="tag blue">Web Project</span>
-      <img class="logo-inline"
-           src="https://assets.wildlivewatch.com/word_mark.webp"
-           alt="WildLiveWatch logo">
-      <p>Live wildlife cameras in one cozy place — a relaxing window into nature, curated for family-friendly viewing.</p>
-      <ul>
-        <li>Clean, kid-safe presentation</li>
-        <li>Lightweight grid for multiple streams</li>
-        <li>Roadmap: species tags & highlights</li>
-      </ul>
-    </article>
+        <!-- WildLiveWatch -->
+        <article class="card">
+          <span class="tag blue">Web Project</span>
+          <img class="logo-inline"
+               src="https://assets.wildlivewatch.com/word_mark.webp"
+               alt="WildLiveWatch word-mark logo">
+          <p>Live wildlife cameras in one cozy place — a relaxing window into nature, curated for family-friendly viewing.</p>
+          <ul>
+            <li>Clean, kid-safe presentation</li>
+            <li>Lightweight grid for multiple streams</li>
+            <li>Roadmap: species tags &amp; highlights</li>
+          </ul>
+        </article>
 
-  </div>
-</section>
-
+      </div>
+    </div>
+  </section>
 
   <footer>
     © <span id="y"></span> Zeriah Studios. All rights reserved.
