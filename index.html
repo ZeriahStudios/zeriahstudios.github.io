@@ -24,7 +24,8 @@
       background: var(--bg);
       color: var(--fg);
     }
-
+    
+    
     /* Header / Nav */
     header {
       display:flex; align-items:center; justify-content:space-between;
@@ -78,6 +79,23 @@
       margin:6px 0 10px;
       filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
     }
+.section {
+  padding: 20px;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.card {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 22px;
+  max-width: 360px;
+  flex: 1 1 300px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.25);
+}
 
     /* Footer (optional placeholder) */
     footer { color:var(--muted); text-align:center; padding:40px 20px; }
@@ -112,49 +130,49 @@
 
   <!-- Games -->
   <section id="games" class="section">
-    <div class="grid">
+  <div class="grid">
 
-      <!-- Super Nursery Fight -->
-      <article class="card">
-        <span class="tag">Auto-battler</span>
-        <h3>Super Nursery Fight</h3>
-        <p>Cute characters, clever synergies. Draft, combine, and outwit across bite-sized rounds.</p>
-        <ul>
-          <li>Quick runs · friendly art</li>
-          <li>Meaningful choices, low friction</li>
-          <li>Roadmap: co-op & weekly seeds</li>
-        </ul>
-      </article>
+    <!-- Super Nursery Fight -->
+    <article class="card">
+      <span class="tag">Auto-battler</span>
+      <h3>Super Nursery Fight</h3>
+      <p>Cute characters, clever synergies. Draft, combine, and outwit across bite-sized rounds.</p>
+      <ul>
+        <li>Quick runs · friendly art</li>
+        <li>Meaningful choices, low friction</li>
+        <li>Roadmap: co-op & weekly seeds</li>
+      </ul>
+    </article>
 
-      <!-- Bonk the Bronto -->
-      <article class="card">
-        <span class="tag blue">Action-Puzzle</span>
-        <h3>Bonk the Bronto</h3>
-        <p>Cavemen, chaos, and comedic timing. Bonk just right to clear routes and collect shiny things.</p>
-        <ul>
-          <li>Snackable stages</li>
-          <li>Expressive 2D/3D mix</li>
-          <li>Roadmap: creator mode</li>
-        </ul>
-      </article>
+    <!-- Bonk the Bronto -->
+    <article class="card">
+      <span class="tag blue">Action-Puzzle</span>
+      <h3>Bonk the Bronto</h3>
+      <p>Cavemen, chaos, and comedic timing. Bonk just right to clear routes and collect shiny things.</p>
+      <ul>
+        <li>Snackable stages</li>
+        <li>Expressive 2D/3D mix</li>
+        <li>Roadmap: creator mode</li>
+      </ul>
+    </article>
 
-      <!-- WildLiveWatch (word-mark image for consistency) -->
-      <article class="card">
-        <span class="tag blue">Web Project</span>
-        <!-- Word-mark fits better than the banner here -->
-        <img class="logo-inline"
-             src="https://assets.wildlivewatch.com/word_mark.webp"
-             alt="WildLiveWatch word-mark">
-        <p>Live wildlife cameras in one cozy place — a relaxing window into nature, curated for family-friendly viewing.</p>
-        <ul>
-          <li>Clean, kid-safe presentation</li>
-          <li>Lightweight grid for multiple streams</li>
-          <li>Roadmap: species tags & highlights</li>
-        </ul>
-      </article>
+    <!-- WildLiveWatch -->
+    <article class="card">
+      <span class="tag blue">Web Project</span>
+      <img class="logo-inline"
+           src="https://assets.wildlivewatch.com/word_mark.webp"
+           alt="WildLiveWatch logo">
+      <p>Live wildlife cameras in one cozy place — a relaxing window into nature, curated for family-friendly viewing.</p>
+      <ul>
+        <li>Clean, kid-safe presentation</li>
+        <li>Lightweight grid for multiple streams</li>
+        <li>Roadmap: species tags & highlights</li>
+      </ul>
+    </article>
 
-    </div>
-  </section>
+  </div>
+</section>
+
 
   <footer>
     © <span id="y"></span> Zeriah Studios. All rights reserved.
