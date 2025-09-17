@@ -9,198 +9,94 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0f172a;        /* page background (slate-900) */
-      --panel:#1e293b;     /* cards/nav background (slate-800) */
-      --fg:#f1f5f9;        /* text (slate-100) */
-      --muted:#94a3b8;     /* secondary text (slate-400) */
-      --brand:#22c55e;     /* green */
-      --accent:#3b82f6;    /* blue */
-      --radius:16px;
-      --shadow:0 4px 20px rgba(0,0,0,.25);
+      --bg:#0f172a; --panel:#1e293b; --fg:#f1f5f9; --muted:#94a3b8;
+      --brand:#22c55e; --accent:#3b82f6; --radius:16px; --shadow:0 4px 20px rgba(0,0,0,.25);
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-    }
-    a { color: inherit; text-decoration: none; }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--fg)}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
 
     /* Header / Nav */
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: var(--bg);
-      padding: 16px 0;
+    header{position:sticky;top:0;z-index:20;background:var(--bg);padding:16px 0}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:28px;width:auto;display:block}
+    .brand h1{font-size:1.4rem;margin:0;font-weight:700}
+
+    /* Desktop nav */
+    .primary-nav a{
+      margin-left:18px;padding:8px 12px;border-radius:10px;font-weight:600;background:transparent
     }
-    .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; }
-    .brand { display:flex; align-items:center; gap:12px; }
-    .brand img { height:28px; width:auto; display:block; }
-    .brand h1 { font-size: 1.4rem; margin:0; font-weight:700; }
+    .primary-nav a:hover{background:#0b1220}
+    .primary-nav .cta{background:var(--brand);color:#0b1a13}
+    .primary-nav .cta:hover,.primary-nav .cta:focus-visible{background:#16a34a;color:#0b1a13}
 
-    nav a {
-      text-decoration:none; color:var(--fg); margin-left:18px; font-weight:600;
-      padding:8px 12px; border-radius:10px; background:transparent;
+    /* Hamburger (mobile only) */
+    .menu-toggle{display:none;align-items:center;justify-content:center;height:40px;width:44px;
+      border-radius:10px;border:1px solid rgba(255,255,255,.1);background:var(--panel);color:var(--fg);cursor:pointer}
+
+    @media (max-width:860px){
+      .menu-toggle{display:inline-flex}
+      .primary-nav{
+        position:absolute;right:20px;top:64px;display:none;flex-direction:column;gap:8px;
+        background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:14px;
+        padding:10px;box-shadow:0 12px 30px rgba(0,0,0,.35);min-width:200px;z-index:25
+      }
+      .primary-nav a{margin:0}
+      .primary-nav a:hover{background:rgba(255,255,255,.06)}
+      .primary-nav.open{display:flex}
     }
-    nav a.cta:hover,
-    nav a.cta:focus-visible {
-    background: #16a34a; /* slightly darker green */
-    color: #0b1a13;
-    }
-    /* Base layout stays as you had it */
-header { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 16px 0; }
-.nav { display:flex; align-items:center; justify-content:space-between; gap:16px; }
-
-/* Desktop nav appearance */
-.primary-nav a {
-  text-decoration:none; color:var(--fg); margin-left:18px; font-weight:600;
-  padding:8px 12px; border-radius:10px; background:transparent;
-}
-.primary-nav a:hover { background:#0b1220; }
-.primary-nav .cta { background:var(--brand); color:#0b1a13; }
-.primary-nav .cta:hover { background:#16a34a; color:#0b1a13; }
-
-/* Hamburger button (hidden on desktop) */
-.menu-toggle {
-  display:none; align-items:center; justify-content:center;
-  height:40px; width:44px; border-radius:10px; border:1px solid rgba(255,255,255,.1);
-  background: var(--panel); color: var(--fg); cursor:pointer;
-}
-
-/* Mobile dropdown behavior */
-@media (max-width: 860px) {
-  /* show the button, hide the inline nav until opened */
-  .menu-toggle { display:inline-flex; }
-  .primary-nav {
-    position: absolute;
-    right: 20px; top: 64px;
-    display: none;                /* hidden by default */
-    flex-direction: column;
-    gap: 8px;
-    background: var(--panel);
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 14px;
-    padding: 10px;
-    box-shadow: 0 12px 30px rgba(0,0,0,.35);
-    min-width: 200px;
-    z-index: 25;
-  }
-  .primary-nav a { margin:0; }
-  .primary-nav.open { display:flex; }  /* toggled on via JS */
-
-  /* On mobile we don’t need inline desktop spacing */
-  .primary-nav a:hover { background: rgba(255,255,255,.06); }
-}
-
 
     /* Hero */
-    .hero { text-align:center; padding: 72px 0 40px; }
-    .hero h2 { font-size: clamp(2rem, 3.5vw, 3rem); margin:0 0 12px; }
-    .hero p  { color:var(--muted); margin:0 auto 20px; max-width:900px; }
-    .btn {
-      display:inline-block; padding:12px 20px; margin:8px;
-      font-weight:700; border-radius:12px; text-decoration:none;
-    }
-    .btn.green { background:var(--brand); color:#062611; }
-    .btn.dark  { background:var(--panel); color:var(--fg); }
+    .hero{text-align:center;padding:72px 0 40px}
+    .hero h2{font-size:clamp(2rem,3.5vw,3rem);margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 auto 20px;max-width:900px}
+    .btn{display:inline-block;padding:12px 20px;margin:8px;font-weight:700;border-radius:12px}
+    .btn.green{background:var(--brand);color:#062611}
+    .btn.dark{background:var(--panel);color:var(--fg)}
 
-    /* Unified card grid (same rhythm as Labs) */
-    .section { padding: 20px 0; }
-    .grid {
-      display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-      justify-content:center;
-    }
-    .card {
-      background:var(--panel);
-      border-radius:var(--radius);
-      padding:22px;
-      max-width:360px;
-      flex:1 1 300px;
-      box-shadow: var(--shadow);
-      min-height:100%;
-    }
-    .tag {
-      display:inline-block; font-weight:800; font-size:.85rem;
-      padding:6px 12px; border-radius:999px; margin-bottom:10px;
-      color:white; background:var(--brand);
-    }
-    .tag.blue { background:var(--accent); }
-    .card h3 { margin:8px 0 10px; }
-    .card p  { margin:0 0 12px; color:var(--fg); }
-    .card ul { margin:0; padding-left:18px; color:var(--muted); }
-    .logo-inline {
-      display:block; max-width:220px; width:100%; height:auto;
-      margin:6px 0 10px;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
-    }
+    /* Cards grid */
+    .section{padding:20px 0}
+    .grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
+    .card{background:var(--panel);border-radius:var(--radius);padding:22px;max-width:360px;flex:1 1 300px;box-shadow:var(--shadow);min-height:100%}
+    .tag{display:inline-block;font-weight:800;font-size:.85rem;padding:6px 12px;border-radius:999px;margin-bottom:10px;color:white;background:var(--brand)}
+    .tag.blue{background:var(--accent)}
+    .card h3{margin:8px 0 10px}
+    .card p{margin:0 0 12px}
+    .card ul{margin:0;padding-left:18px;color:var(--muted)}
+    .logo-inline{display:block;max-width:220px;width:100%;height:auto;margin:6px 0 10px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
 
-    /* Footer */
-    footer { color:var(--muted); text-align:center; padding:40px 20px; }
+    footer{color:var(--muted);text-align:center;padding:40px 20px}
   </style>
 </head>
-  <script>
-  (function(){
-    const btn = document.getElementById('menu-toggle');
-    const nav = document.getElementById('primary-nav');
-
-    function closeMenu(){
-      nav.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-    }
-
-    btn.addEventListener('click', (e) => {
-      const isOpen = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', String(isOpen));
-      e.stopPropagation();
-    });
-
-    // click outside to close
-    document.addEventListener('click', (e) => {
-      if (!nav.contains(e.target) && !btn.contains(e.target)) closeMenu();
-    });
-
-    // ESC to close
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
-    });
-  })();
-</script>
-
 <body>
 
+  <!-- Header -->
   <header>
-  <div class="wrap nav">
-    <div class="brand">
-      <img src="https://assets.zeriahstudios.com/Zeriah%20Studios%20Horizontal%20Tight.webp" alt="Zeriah Studios logo">
-      <h1>Zeriah Studios</h1>
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="https://assets.zeriahstudios.com/Zeriah%20Studios%20Horizontal%20Tight.webp" alt="Zeriah Studios logo">
+        <h1>Zeriah Studios</h1>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-controls="primary-nav" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Primary nav -->
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+        <a href="index.html">Games</a>
+        <a href="about.html">About</a>
+        <a href="devlog.html">Devlog</a>
+        <a href="contact.html">Contact</a>
+        <a class="cta" href="https://zeriahgroup.com">Zeriah Group</a>
+      </nav>
     </div>
-
-    <!-- Mobile toggle -->
-    <button id="menu-toggle"
-            class="menu-toggle"
-            aria-label="Toggle menu"
-            aria-controls="primary-nav"
-            aria-expanded="false">
-      <!-- simple hamburger icon -->
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
-
-    <!-- Primary nav -->
-    <nav id="primary-nav" class="primary-nav">
-      <a href="index.html">Games</a>
-      <a href="about.html">About</a>
-      <a href="devlog.html">Devlog</a>
-      <a href="contact.html">Contact</a>
-      <a class="cta" href="https://zeriahgroup.com">Zeriah Group</a>
-    </nav>
-  </div>
-</header>
-
+  </header>
 
   <!-- Hero -->
   <section class="hero wrap">
@@ -214,8 +110,6 @@ header { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 
   <section id="games" class="section">
     <div class="wrap">
       <div class="grid">
-
-        <!-- Super Nursery Fight -->
         <article class="card">
           <span class="tag">Auto-battler</span>
           <h3>Super Nursery Fight</h3>
@@ -227,7 +121,6 @@ header { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 
           </ul>
         </article>
 
-        <!-- Bonk the Bronto -->
         <article class="card">
           <span class="tag blue">Action-Puzzle</span>
           <h3>Bonk the Bronto</h3>
@@ -239,12 +132,9 @@ header { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 
           </ul>
         </article>
 
-        <!-- WildLiveWatch -->
         <article class="card">
           <span class="tag blue">Web Project</span>
-          <img class="logo-inline"
-               src="https://assets.wildlivewatch.com/word_mark.webp"
-               alt="WildLiveWatch word-mark logo">
+          <img class="logo-inline" src="https://assets.wildlivewatch.com/word_mark.webp" alt="WildLiveWatch word-mark logo">
           <p>Live wildlife cameras in one cozy place — a relaxing window into nature, curated for family-friendly viewing.</p>
           <ul>
             <li>Clean, kid-safe presentation</li>
@@ -252,14 +142,34 @@ header { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 
             <li>Roadmap: species tags &amp; highlights</li>
           </ul>
         </article>
-
       </div>
     </div>
   </section>
 
-  <footer>
-    © <span id="y"></span> Zeriah Studios. All rights reserved.
-  </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <footer>© <span id="y"></span> Zeriah Studios. All rights reserved.</footer>
+
+  <!-- JS at end so elements exist -->
+  <script>
+    (function(){
+      const btn = document.getElementById('menu-toggle');
+      const nav = document.getElementById('primary-nav');
+      if (!btn || !nav) return;
+
+      function closeMenu(){
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      }
+      btn.addEventListener('click', (e) => {
+        const isOpen = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(isOpen));
+        e.stopPropagation();
+      });
+      document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && !btn.contains(e.target)) closeMenu();
+      });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+      document.getElementById('y').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
