@@ -48,6 +48,50 @@
     background: #16a34a; /* slightly darker green */
     color: #0b1a13;
     }
+    /* Base layout stays as you had it */
+header { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 16px 0; }
+.nav { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+
+/* Desktop nav appearance */
+.primary-nav a {
+  text-decoration:none; color:var(--fg); margin-left:18px; font-weight:600;
+  padding:8px 12px; border-radius:10px; background:transparent;
+}
+.primary-nav a:hover { background:#0b1220; }
+.primary-nav .cta { background:var(--brand); color:#0b1a13; }
+.primary-nav .cta:hover { background:#16a34a; color:#0b1a13; }
+
+/* Hamburger button (hidden on desktop) */
+.menu-toggle {
+  display:none; align-items:center; justify-content:center;
+  height:40px; width:44px; border-radius:10px; border:1px solid rgba(255,255,255,.1);
+  background: var(--panel); color: var(--fg); cursor:pointer;
+}
+
+/* Mobile dropdown behavior */
+@media (max-width: 860px) {
+  /* show the button, hide the inline nav until opened */
+  .menu-toggle { display:inline-flex; }
+  .primary-nav {
+    position: absolute;
+    right: 20px; top: 64px;
+    display: none;                /* hidden by default */
+    flex-direction: column;
+    gap: 8px;
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    min-width: 200px;
+    z-index: 25;
+  }
+  .primary-nav a { margin:0; }
+  .primary-nav.open { display:flex; }  /* toggled on via JS */
+
+  /* On mobile we don’t need inline desktop spacing */
+  .primary-nav a:hover { background: rgba(255,255,255,.06); }
+}
 
 
     /* Hero */
@@ -97,24 +141,66 @@
     footer { color:var(--muted); text-align:center; padding:40px 20px; }
   </style>
 </head>
+  <script>
+  (function(){
+    const btn = document.getElementById('menu-toggle');
+    const nav = document.getElementById('primary-nav');
+
+    function closeMenu(){
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    btn.addEventListener('click', (e) => {
+      const isOpen = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(isOpen));
+      e.stopPropagation();
+    });
+
+    // click outside to close
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !btn.contains(e.target)) closeMenu();
+    });
+
+    // ESC to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+</script>
+
 <body>
 
-  <!-- Header -->
   <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <img src="https://assets.zeriahstudios.com/Zeriah%20Studios%20Horizontal%20Tight.webp" alt="Zeriah Studios logo">
-        <h1>Zeriah Studios</h1>
-      </div>
-      <nav>
-        <a href="index.html">Games</a>
-        <a href="about.html">About</a>
-        <a href="devlog.html">Devlog</a>
-        <a href="contact.html">Contact</a>
-        <a class="cta" href="https://zeriahgroup.com">Zeriah Group</a>
-      </nav>
+  <div class="wrap nav">
+    <div class="brand">
+      <img src="https://assets.zeriahstudios.com/Zeriah%20Studios%20Horizontal%20Tight.webp" alt="Zeriah Studios logo">
+      <h1>Zeriah Studios</h1>
     </div>
-  </header>
+
+    <!-- Mobile toggle -->
+    <button id="menu-toggle"
+            class="menu-toggle"
+            aria-label="Toggle menu"
+            aria-controls="primary-nav"
+            aria-expanded="false">
+      <!-- simple hamburger icon -->
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Primary nav -->
+    <nav id="primary-nav" class="primary-nav">
+      <a href="index.html">Games</a>
+      <a href="about.html">About</a>
+      <a href="devlog.html">Devlog</a>
+      <a href="contact.html">Contact</a>
+      <a class="cta" href="https://zeriahgroup.com">Zeriah Group</a>
+    </nav>
+  </div>
+</header>
+
 
   <!-- Hero -->
   <section class="hero wrap">
