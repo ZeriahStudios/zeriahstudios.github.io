@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Devlog — Zeriah Studios</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#eef2ff;
+      --muted:#a6b0c6;
+      --rule:rgba(255,255,255,.08);
+      --brand:#22e3b1;
+      --max:900px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:linear-gradient(180deg,#070a12,#050712);
+      color:var(--ink);
+      line-height:1.7;
+    }
+    a{color:inherit;text-decoration:none}
+    header{
+      border-bottom:1px solid var(--rule);
+      background:rgba(7,10,18,.85);
+      backdrop-filter: blur(10px);
+    }
+    .wrap{max-width:var(--max);margin:0 auto;padding:20px}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    nav a{color:var(--muted);font-weight:700}
+    nav a:hover{color:var(--ink)}
+    .cta{
+      background:linear-gradient(135deg,rgba(34,227,177,.95),rgba(34,227,177,.7));
+      padding:8px 14px;border-radius:12px;color:#04130f;
+    }
+
+    main{padding:48px 20px}
+    h1{margin:0 0 10px;font-size:2.2rem}
+    p{margin:10px 0;color:var(--muted)}
+    ul{margin-top:18px;padding-left:18px}
+    li{margin:10px 0}
+
+    footer{
+      border-top:1px solid var(--rule);
+      margin-top:40px;
+      padding:20px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a href="index.html">Browse</a>
+        <a href="about.html">About</a>
+        <a href="devlog.html" style="color:var(--ink)">Devlog</a>
+        <a href="contact.html">Contact</a>
+        <a class="cta" href="https://zeriahgroup.com">Zeriah Group</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Devlog</h1>
+    <p>
+      Short notes from the studio — what we’re building, experimenting with,
+      and learning along the way.
+    </p>
+
+    <ul>
+      <li>🧩 Prototyping small “play together” games (GridWords, Snakes & Ladders)</li>
+      <li>🎨 Refining a cozy, low-stress visual style</li>
+      <li>⚙️ Exploring simple Godot workflows for rapid iteration</li>
+    </ul>
+
+    <p>
+      More detailed updates will appear here when things are ready to share.
+    </p>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Zeriah Studios · A Zeriah Group company
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
