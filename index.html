@@ -215,6 +215,50 @@
     radial-gradient(700px 380px at 70% 25%, rgba(255,255,255,.10), transparent 55%),
     linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
 }
+/* --- Tasteful shimmer on hover/focus --- */
+.poster{ position:relative; overflow:hidden; }
+
+.poster::after{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  transform: translateX(-60%) rotate(12deg);
+  opacity:0;
+  pointer-events:none;
+
+  /* a soft diagonal light sweep */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,.06) 35%,
+    rgba(255,255,255,.14) 50%,
+    rgba(255,255,255,.06) 65%,
+    transparent 100%
+  );
+  filter: blur(1px);
+  transition: opacity .18s ease;
+}
+
+/* Trigger shimmer only when the whole card is hovered/focused */
+.tile:hover .poster::after,
+.tile:focus-visible .poster::after{
+  opacity:1;
+  animation: shimmer-sweep 1.05s ease-in-out;
+}
+
+/* Subtle lift already exists on .tile:hover; this complements it */
+@keyframes shimmer-sweep{
+  0%   { transform: translateX(-60%) rotate(12deg); }
+  100% { transform: translateX(60%)  rotate(12deg); }
+}
+
+/* Respect reduced-motion users */
+@media (prefers-reduced-motion: reduce){
+  .tile:hover .poster::after,
+  .tile:focus-visible .poster::after{
+    animation:none;
+  }
+}
 
   </style>
 </head>
